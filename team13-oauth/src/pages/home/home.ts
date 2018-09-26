@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { GooglePlus } from 'ionic-native';
+import { AboutPage } from '../about/about';
+import { ContactPage } from '../contact/contact';
+import { IntegrationsPage } from '../integrations/integrations';
 
 @Component({
   selector: 'page-home',
@@ -21,15 +24,27 @@ export class HomePage {
     }, (err) => {
         console.log(err);
     });
-
 }
 
 logout(){
-
     GooglePlus.logout().then(() => {
         console.log("logged out");
     });
+}
 
+goToAbout() {
+    console.log("About button pushed");
+    this.navCtrl.push(AboutPage);
+}
+
+goToContact() {
+    console.log("Contact button pushed");
+    this.navCtrl.push(ContactPage);
+}
+
+goToIntegrations() {
+    console.log("Integrations!");
+    this.navCtrl.push(IntegrationsPage);
 }
 
 }
