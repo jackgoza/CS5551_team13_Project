@@ -54,7 +54,8 @@
       "cordova-plugin-ionic-webview": {},
       "cordova-plugin-ionic-keyboard": {},
       "cordova-plugin-googleplus": {
-        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.164159689649-idul9lrcnu0bdofprrje2qsf7auam6b1"
+        "REVERSED_CLIENT_ID": "com.googleusercontent.apps.164159689649-idul9lrcnu0bdofprrje2qsf7auam6b1",
+        "WEB_APPLICATION_CLIENT_ID": "164159689649-idul9lrcnu0bdofprrje2qsf7auam6b1.apps.googleusercontent.com"
       }
     },
     "platforms": [
