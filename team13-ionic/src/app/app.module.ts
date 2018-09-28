@@ -9,11 +9,8 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { IntegrationsPage } from '../pages/integrations/integrations';
-<<<<<<< HEAD
 import { RegisterPage } from '../pages/register/register';
-=======
 import { ImagePage } from '../pages/image/image';
->>>>>>> master
 
 @NgModule({
   declarations: [
@@ -22,11 +19,8 @@ import { ImagePage } from '../pages/image/image';
     AboutPage,
     ContactPage,
     IntegrationsPage,
-<<<<<<< HEAD
-    RegisterPage
-=======
+    RegisterPage,
     ImagePage
->>>>>>> master
   ],
   imports: [
     BrowserModule,
@@ -39,11 +33,8 @@ import { ImagePage } from '../pages/image/image';
     AboutPage,
     ContactPage,
     IntegrationsPage,
-<<<<<<< HEAD
-    RegisterPage
-=======
+    RegisterPage,
     ImagePage
->>>>>>> master
   ],
   providers: [
     StatusBar,
