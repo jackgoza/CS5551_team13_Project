@@ -82,9 +82,11 @@
     <plugin name="cordova-plugin-splashscreen" spec="5.0.2" />
     <plugin name="cordova-plugin-ionic-webview" spec="^2.0.0" />
     <plugin name="cordova-plugin-ionic-keyboard" spec="^2.0.5" />
-    <engine name="ios" spec="4.5.5" />
     <plugin name="cordova-plugin-googleplus" spec="git+https://github.com/EddyVerbruggen/cordova-plugin-googleplus.git">
         <variable name="REVERSED_CLIENT_ID" value="com.googleusercontent.apps.164159689649-idul9lrcnu0bdofprrje2qsf7auam6b1" />
         <variable name="WEB_APPLICATION_CLIENT_ID" value="164159689649-idul9lrcnu0bdofprrje2qsf7auam6b1.apps.googleusercontent.com" />
     </plugin>
+    <plugin name="cordova-plugin-camera" spec="^4.0.3" />
+    <engine name="ios" spec="4.5.5" />
+    <engine name="android" spec="7.0.0" />
 </widget>

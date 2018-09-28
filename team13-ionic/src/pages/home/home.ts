@@ -4,7 +4,11 @@ import { GooglePlus } from 'ionic-native';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { IntegrationsPage } from '../integrations/integrations';
+<<<<<<< HEAD
 import { RegisterPage } from '../register/register';
+=======
+import { ImagePage } from '../image/image';
+>>>>>>> master
 
 @Component({
   selector: 'page-home',
@@ -53,6 +57,11 @@ goToContact() {
 goToIntegrations() {
     console.log("Integrations!");
     this.navCtrl.push(IntegrationsPage);
+}
+
+goToImage() {
+    console.log("Image");
+    this.navCtrl.push(ImagePage);
 }
 
 }
