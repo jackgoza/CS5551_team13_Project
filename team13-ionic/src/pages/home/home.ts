@@ -4,7 +4,11 @@ import { GooglePlus } from 'ionic-native';
 import { AboutPage } from '../about/about';
 import { ContactPage } from '../contact/contact';
 import { IntegrationsPage } from '../integrations/integrations';
+<<<<<<< HEAD
+import { RegisterPage } from '../register/register';
+=======
 import { ImagePage } from '../image/image';
+>>>>>>> master
 
 @Component({
   selector: 'page-home',
@@ -16,8 +20,15 @@ export class HomePage {
 
   }
 
-  login(){
- 
+  register() {
+      this.navCtrl.push(RegisterPage);
+  }
+
+  login() {
+    console.log("your mom loves you, but not that much");
+  }
+
+  loginWithGoogle(){ 
     GooglePlus.login({
       'webClientId': '164159689649-mgq2po8ev40f9k4lkcdcrmbeorv0qbuo.apps.googleusercontent.com'
     }).then((res) => {
@@ -27,11 +38,11 @@ export class HomePage {
     });
 }
 
-logout(){
-    GooglePlus.logout().then(() => {
-        console.log("logged out");
-    });
-}
+// logout(){
+//     GooglePlus.logout().then(() => {
+//         console.log("logged out");
+//     });
+// }
 
 goToAbout() {
     console.log("About button pushed");
