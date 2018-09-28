@@ -9,6 +9,7 @@ import { HomePage } from '../pages/home/home';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { IntegrationsPage } from '../pages/integrations/integrations';
+import { ImagePage } from '../pages/image/image';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { IntegrationsPage } from '../pages/integrations/integrations';
     HomePage,
     AboutPage,
     ContactPage,
-    IntegrationsPage
+    IntegrationsPage,
+    ImagePage
   ],
   imports: [
     BrowserModule,
@@ -28,7 +30,8 @@ import { IntegrationsPage } from '../pages/integrations/integrations';
     HomePage,
     AboutPage,
     ContactPage,
-    IntegrationsPage
+    IntegrationsPage,
+    ImagePage
   ],
   providers: [
     StatusBar,
