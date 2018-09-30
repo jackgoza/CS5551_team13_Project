@@ -1,0 +1,68 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title text-center>{{ 'SIGNUP_TITLE' | translate }}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content>
+  <form (submit)="doSignup()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label fixed>{{ 'NAME' | translate }}</ion-label>
+        <ion-input type="text" [(ngModel)]="account.name" name="name"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label fixed>{{ 'EMAIL' | translate }}</ion-label>
+        <ion-input type="email" [(ngModel)]="account.email" name="email"></ion-input>
+      </ion-item>
+
+      <!--
+      Want to add a Username? Here you go:
+
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input type="text" [(ngModel)]="account.username" name="username"></ion-input>
+      </ion-item>
+      -->
+      <ion-item>
+        <ion-label fixed>{{ 'PASSWORD' | translate }}</ion-label>
+        <ion-input type="password" [(ngModel)]="account.password" name="password"></ion-input>
+      </ion-item>
+
+      <div padding>
+        <ion-list>
+          <ion-item class="item item-checkbox">
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Check and agree using policies <br>
+
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Check and receive latest info email
+          </ion-item>
+        </ion-list>
+      </div>
+      <div padding>
+        <button ion-button color="primary" block>{{ 'SIGNUP_BUTTON' | translate }}</button>
+      </div>
+
+    </ion-list>
+  </form>
+
+
+  <div padding text-center>
+    <a color="primary">{{ 'LOGIN_OPTION' | translate }}</a>
+  </div>
+  <ion-buttons text-center>
+    <button ion-button calm>Facebook</button>
+    <button ion-button calm>Twitter</button>
+    <button ion-button red>Google</button>
+  </ion-buttons>
+</ion-content>
