@@ -1,5 +1,6 @@
 # Latest NEW
 * Uploaded the Login with OAuth in the folder `New_src_10_02`  Date:`10/02/2018`
+* Please rename `New_src_10_02` to `src` when open in local
 
 ---
 
