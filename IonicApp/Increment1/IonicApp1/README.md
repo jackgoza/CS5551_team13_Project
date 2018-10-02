@@ -1,4 +1,11 @@
-# The Ionic APP
+# Latest NEW
+* Uploaded the Login with OAuth in the folder `New_src_10_02`  Date:`10/02/2018`
+
+
+---
+
+
+# The Ionic APP for 5551ASE_Team13
 
 The Ionic Super Starter is a batteries-included starter project for Ionic apps
 complete with pre-built pages, providers, and best practices for Ionic
