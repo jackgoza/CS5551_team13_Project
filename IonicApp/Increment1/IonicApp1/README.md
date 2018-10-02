@@ -1,6 +1,4 @@
-# The Ionic Super Starter 🎮
-
-<img src="https://user-images.githubusercontent.com/236501/32385619-bddac0ac-c08c-11e7-9ee4-9c892197191f.png" width="400" />
+# The Ionic APP
 
 The Ionic Super Starter is a batteries-included starter project for Ionic apps
 complete with pre-built pages, providers, and best practices for Ionic
@@ -28,31 +26,6 @@ without duplicating code.
 2. [Pages](#pages)
 3. [Providers](#providers)
 4. [i18n](#i18n) (adding languages)
-
-## <a name="getting-started"></a>Getting Started
-
-To test this starter out, install the latest version of the Ionic CLI and run:
-
-```bash
-ionic start mySuperApp super
-```
-
-## Pages
-
-The Super Starter comes with a variety of ready-made pages. These pages help
-you assemble common building blocks for your app so you can focus on your
-unique features and branding.
-
-The app loads with the `FirstRunPage` set to `TutorialPage` as the default. If
-the user has already gone through this page once, it will be skipped the next
-time they load the app.
-
-If the tutorial is skipped but the user hasn't logged in yet, the Welcome page
-will be displayed which is a "splash" prompting the user to log in or create an
-account.
-
-Once the user is authenticated, the app will load with the `MainPage` which is
-set to be the `TabsPage` as the default.
 
 The entry and main pages can be configured easily by updating the corresponding
 variables in
