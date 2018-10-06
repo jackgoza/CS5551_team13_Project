@@ -18,14 +18,9 @@ variables in
 
 ## Important Plugins
 
-### GoogluPlus
+### GooglePlus
 
 * `ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=YOUR_REVERSED_CLIENT_ID --variable WEB_APPLICATION_CLIENT_ID=YOUR_APPLICATION_CLIENT_ID`
-
-### Firebase & AngularFire2
-* You have to install these two by npm to use Firebase.
-* Open '/src/app/app.firebase.config.ts', change all the keys and IDs to yours.
-* The version Max is using are `Angularfire2@4.0.0-rc.0` and `firebase@3.9.0`
 
 ### Camera
 
