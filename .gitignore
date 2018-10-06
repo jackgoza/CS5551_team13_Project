@@ -8,6 +8,7 @@
 */build
 /build/
 www/
+*./www.*
 
 # dependencies
 */node_modules
