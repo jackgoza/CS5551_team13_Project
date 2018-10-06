@@ -9,6 +9,7 @@
 /build/
 www/
 *./www.*
+IonicApp1/www/
 
 # dependencies
 */node_modules
