@@ -11,6 +11,10 @@ www/
 *./www.*
 IonicApp1/www/
 
+# machine specifc things
+/platforms
+/plugins
+
 # dependencies
 */node_modules
 /node_modules/
