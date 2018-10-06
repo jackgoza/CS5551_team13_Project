@@ -13,10 +13,10 @@ export class InfoPage {
   arrData = [];
   myInput;
   constructor(public navCtrl: NavController, private fdb: AngularFireDatabase) {
-    this.fdb.list("/myItems/").subscribe(_data =>{
-      this.arrData = _data;
-      console.log(this.arrData);
-    });
+    // this.fdb.list("/myItems/").subscribe(_data =>{
+    //   this.arrData = _data;
+    //   console.log(this.arrData);
+    // });
   }
   btnAddClicked() {
     this.fdb.list("/myItems/").push(this.myInput);
