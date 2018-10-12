@@ -65,7 +65,12 @@ describe("MyApp Component", () => {
     expect(component instanceof MyApp).toBe(true);
   });
 
-  it("should have two pages", () => {
+  it("should have 14 pages", () => {
     expect(component.pages.length).toBe(14);
+  });
+
+  it("root should be tutorial", () => {
+    console.log(component);
+    expect(component.rootPage).toBe('TutorialPage');
   });
 });
