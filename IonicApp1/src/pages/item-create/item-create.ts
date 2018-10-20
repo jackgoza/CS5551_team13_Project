@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {ActionSheetController, IonicPage, NavController, ViewController} from 'ionic-angular';
 import firebase from 'firebase';
+import { userInfo } from 'os';
 @IonicPage()
 @Component({
   selector: 'page-item-create',
@@ -21,7 +22,7 @@ export class ItemCreatePage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera,
               private actionSheetCtrl: ActionSheetController) {
 
-    this.mypicref=firebase.storage().ref('/');
+    this.mypicref=firebase.storage().ref('/photos/');
 
     this.form = formBuilder.group({
       profilePic: [''],
@@ -41,18 +42,18 @@ export class ItemCreatePage {
           text: 'From Camera',
           handler: async () => {
             try {
-              const options: CameraOptions = {
-                quality: 50,
-                targetHeight: 600,
-                targetWidth: 600,
+              this.camera.getPicture({
+                quality: 100,
                 destinationType: this.camera.DestinationType.DATA_URL,
-                encodingType: this.camera.EncodingType.JPEG,
-                mediaType: this.camera.MediaType.PICTURE,
-              };
-              const result = await this.camera.getPicture(options)
-              const image = 'data:image/jpeg;base64,${result}';
-              const pictures = firebase.storage().ref('pictures');
-              pictures.putString(image, 'data_url');
+                sourceType: this.camera.PictureSourceType.CAMERA,
+                encodingType: this.camera.EncodingType.PNG,
+                saveToPhotoAlbum: true
+              }).then(imageData => {
+                this.picdata = imageData;
+                this.uploadPhoto();
+              }, error => {
+                console.log("ERROR -> " + JSON.stringify(error));
+              });
             }
             catch (e) {
               console.error(e);
@@ -63,10 +64,17 @@ export class ItemCreatePage {
           text: 'From Gallery',
           handler: () => {
             try {
-              this.picdata = this.fileInput.nativeElement.click();
-              const image = 'data:image/jpeg;base64,' + this.picdata;
-              const pictures = firebase.storage().ref('pictures/maxPics2/');
-              pictures.putString(image, 'base64', {contentType: 'image/jpg'});  //this is the failing line
+              this.camera.getPicture({
+                sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+                destinationType: this.camera.DestinationType.DATA_URL,
+                quality: 100,
+                encodingType: this.camera.EncodingType.PNG,
+              }).then(imageData => {
+                this.picdata = imageData;
+                this.uploadPhoto();
+              }, error => {
+                console.log("ERROR -> " + JSON.stringify(error));
+              });
             }
             catch (e) {
               console.error(e);
@@ -107,5 +115,23 @@ export class ItemCreatePage {
   done() {
     if (!this.form.valid) { return; }
     this.viewCtrl.dismiss(this.form.value);
+  }
+
+  private uploadPhoto(): void {
+    this.mypicref.child("jack").child(this.generateUUID()+'.png')
+      .putString(this.picdata, 'base64', { contentType: 'image/png' })
+      .then((savedPicture) => {
+        this.picurl = savedPicture.downloadURL;
+      });
+  }
+
+  private generateUUID(): any {
+    var d = new Date().getTime();
+    var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uuid;
   }
 }
