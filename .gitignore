@@ -19,6 +19,10 @@ IonicApp1/www/
 */node_modules
 /node_modules/
 /node_modules
+*/.sourcemaps
+/.sourcemaps/
+/.sourcemaps
+
 
 # IDEs and editors
 /.idea
