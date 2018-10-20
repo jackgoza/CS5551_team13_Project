@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, ToastController } from 'ionic-angular';
 import { GooglePlus } from "@ionic-native/google-plus";
-import { MainPage } from '../';
-import { LoadingController, Loading } from "ionic-angular";
+import { LoadingController } from "ionic-angular";
 import { NativeStorage } from "@ionic-native/native-storage";
 import { SettingsPage } from "../settings/settings";
 import { User } from "../../models/user";
@@ -19,7 +18,6 @@ export class LoginPage {
   constructor(public navCtrl: NavController,
     public toastCtrl: ToastController,
     private afAuth: AngularFireAuth,
-    private toast: ToastController,
     public googlePlus: GooglePlus, public loadingCtrl: LoadingController, public nativeStorage: NativeStorage
   ) {
 

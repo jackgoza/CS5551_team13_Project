@@ -10,7 +10,7 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
-import {MovieService} from "../services/rest/movie-service";
+import {ProductSearchService} from "../services/rest/product-search-service";
 import {APIInfoPage} from "../pages/APIinfo/APIinfo";
 import {HttpModule} from "@angular/http";
 import { LoginServiceProvider } from '../providers/login-service/login-service';
@@ -71,7 +71,7 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
-    MovieService,
+    ProductSearchService,
     Base64,
     GooglePlus,
     NativeStorage,
