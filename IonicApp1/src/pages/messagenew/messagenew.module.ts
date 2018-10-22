@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import { TranslateModule } from '@ngx-translate/core';
 import { IonicPageModule } from 'ionic-angular';
 
 import { MessagenewPage } from './messagenew';
@@ -9,8 +8,7 @@ import { MessagenewPage } from './messagenew';
     MessagenewPage,
   ],
   imports: [
-    IonicPageModule.forChild(MessagenewPage),
-    TranslateModule.forChild()
+    IonicPageModule.forChild(MessagenewPage)
   ],
   exports: [
     MessagenewPage
