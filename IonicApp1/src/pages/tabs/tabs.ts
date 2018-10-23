@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, ToastController} from 'ionic-angular';
 import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root } from '../';
-import {AngularFireDatabase, FirebaseObjectObservable} from "angularfire2/database";
 import {Profile} from "../../models/profile";
 import {AngularFireAuth} from "angularfire2/auth";
 import 'rxjs/add/operator/take';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -24,7 +24,7 @@ export class TabsPage {
   tab4Title = " ";
   tab5Title = " ";
 
-  profileData: FirebaseObjectObservable<Profile>;
+  profileData: AngularFireObject<Profile>;
 
   constructor(
     private toast: ToastController,

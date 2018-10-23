@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {ActionSheetController, AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {Profile} from "../../models/profile";
-import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
+import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 @IonicPage()
@@ -12,8 +12,8 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 })
 export class ProfilePage {
   profile = {} as Profile;
-  ProPicItems: FirebaseListObservable<any[]>;
-  SaveProPicItems:FirebaseListObservable<any[]>;
+  ProPicItems: AngularFireList<any[]>;
+  SaveProPicItems:AngularFireList<any[]>;
   private UploadPicItems: any;
   // @ts-ignore
   // UploadPicItems: [];

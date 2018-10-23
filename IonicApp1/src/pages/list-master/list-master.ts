@@ -4,7 +4,8 @@ import { APIInfoPage } from "../APIinfo/APIinfo";
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 import { GoogleCloudVisionServiceProvider} from "../../providers/google-cloud-vision-service/google-cloud-vision-service";
-import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
 import {WalmartLab} from "../../services/rest/walmartLab";
 import {AmazonAws} from "../../services/rest/amazon";
 
@@ -19,7 +20,7 @@ export class ListMasterPage {
   apiItems: Array<any>;
   picItems: Array<any>;
   loading: Loading;
-  PicItems: FirebaseListObservable<any[]>;
+  PicItems: AngularFireList<any>;
   constructor(
     private vision: GoogleCloudVisionServiceProvider,
     private afdb: AngularFireDatabase,
@@ -157,7 +158,7 @@ export class ListMasterPage {
   saveResults(imageData, results) {
     this.PicItems.push({ imageData: imageData, results: results})
       .then(_ => { })
-      .catch(err => { this.showAlert(err) });
+      // .catch(err => { this.showAlert(err) });
   }
   showAlert(message) {
     let alert = this.alert.create({

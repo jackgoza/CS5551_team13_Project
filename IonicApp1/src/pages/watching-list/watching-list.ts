@@ -19,7 +19,7 @@ export class WatchingListPage {
   arrData = [];
   myInput;
   constructor(public navCtrl: NavController, private fdb: AngularFireDatabase) {
-    this.fdb.list("/myItems/").subscribe(_data =>{
+    this.fdb.list("/myItems/").valueChanges().subscribe(_data =>{
       this.arrData = _data;
       console.log(this.arrData);
     });
