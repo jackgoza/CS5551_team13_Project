@@ -4,7 +4,7 @@ import {Observable} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 
 @Injectable()
-export class MovieService {
+export class WalmartLab {
   data: Observable<any>;
   constructor(private http:HttpClient) {
   }

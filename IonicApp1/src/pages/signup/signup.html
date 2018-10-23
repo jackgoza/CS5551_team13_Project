@@ -1,7 +1,7 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title text-center>{{ 'SIGNUP_TITLE' }}</ion-title>
+    <ion-title text-center>Sign up</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -23,26 +23,30 @@
     <div padding>
       <ion-list>
         <ion-item class="item item-checkbox">
-          <label class="checkbox">
-            <input type="checkbox">
-          </label>
-          Check and agree using policies <br>
-          <label class="checkbox">
-            <input type="checkbox">
-          </label>
-          Check and receive latest info email
+          <p>
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+             Check and agree using policies <br>
+          </p>
+          <p>
+            <label class="checkbox">
+              <input type="checkbox">
+            </label>
+            Check and receive latest info email
+          </p>
         </ion-item>
       </ion-list>
     </div>
 
     <div padding>
-      <button ion-button color="primary" block (click)="doSignup(user)">{{ 'SIGNUP_BUTTON' }}</button>
+      <button ion-button color="primary" block (click)="doSignup(user)">Sign up</button>
     </div>
 
   </ion-list>
 
   <div padding text-center>
-    <a color="primary">{{ 'LOGIN_OPTION' }}</a>
+    <a color="primary">Sign in by other accounts</a>
   </div>
   <ion-buttons text-center>
     <button ion-button round color="facebook">Facebook</button>

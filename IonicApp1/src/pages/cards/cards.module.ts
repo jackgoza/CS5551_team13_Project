@@ -8,7 +8,7 @@ import { CardsPage } from './cards';
     CardsPage,
   ],
   imports: [
-    IonicPageModule.forChild(CardsPage),
+    IonicPageModule.forChild(CardsPage)
   ],
   exports: [
     CardsPage

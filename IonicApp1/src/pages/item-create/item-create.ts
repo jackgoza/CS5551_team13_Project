@@ -2,7 +2,9 @@ import { Component, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import {Camera, CameraOptions} from '@ionic-native/camera';
 import {ActionSheetController, IonicPage, NavController, ViewController} from 'ionic-angular';
+
 import firebase from 'firebase';
+
 @IonicPage()
 @Component({
   selector: 'page-item-create',
@@ -21,8 +23,6 @@ export class ItemCreatePage {
   constructor(public navCtrl: NavController, public viewCtrl: ViewController, formBuilder: FormBuilder, public camera: Camera,
               private actionSheetCtrl: ActionSheetController) {
 
-    this.mypicref=firebase.storage().ref('/');
-
     this.form = formBuilder.group({
       profilePic: [''],
       name: ['', Validators.required],
@@ -33,8 +33,8 @@ export class ItemCreatePage {
       this.isReadyToSave = this.form.valid;
     });
   }
-
   selectPicture() {
+    // @ts-ignore
     this.actionSheetCtrl.create({
       buttons:[
         {
@@ -61,12 +61,24 @@ export class ItemCreatePage {
         },
         {
           text: 'From Gallery',
-          handler: () => {
+          handler: async () => {
             try {
-              this.picdata = this.fileInput.nativeElement.click();
-              const image = 'data:image/jpeg;base64,' + this.picdata;
-              const pictures = firebase.storage().ref('pictures/maxPics2/');
-              pictures.putString(image, 'base64', {contentType: 'image/jpg'});  //this is the failing line
+              const options: CameraOptions = {
+                sourceType: this.camera.PictureSourceType.PHOTOLIBRARY,
+                quality: 100,
+                destinationType: this.camera.DestinationType.DATA_URL,
+                encodingType: this.camera.EncodingType.JPEG,
+              };
+              this.camera.getPicture(options).then(imageData => {
+                this.picdata = imageData;
+              });
+              this.picurl =firebase.storage().ref('pictures/maxPics2/');
+              this.picurl.child(this.uid()).child('myPhoto.png')
+                .putString(this.picdata, 'base64', {contentType: 'image/jpg'})
+                .then((savePicture)=>{
+                  this.mypicref = savePicture.downloadURL;
+                });
+              this.picurl =firebase.storage().ref('pictures/maxPics2/');
             }
             catch (e) {
               console.error(e);
@@ -83,6 +95,18 @@ export class ItemCreatePage {
       ]
     }).present();
   }
+
+  private uid(): any {
+    var d =new Date().getTime();
+    // @ts-ignore
+    var uid1 = 'xxxxxxxx-xxxx-4xxx-yxxx'.replace(/[xy]/g, function (c) {
+      var r = (d + Math.random() * 16) % 16 | 0;
+      d = Math.floor(d / 16);
+      return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16);
+    });
+    return uid1;
+  }
+
   processWebImage(event) {
     let reader = new FileReader();
     reader.onload = (readerEvent) => {

@@ -11,16 +11,7 @@
     <button ion-button color="primary" block (click)="uploaditems()">Upload my discovers</button>
   </div>
 
-  <ion-item>
-    <ion-input [(ngModel)]="myInput"></ion-input>
-  </ion-item>
-  <button ion-button (click)="btnAddClicked()">Add</button>
 
-  <ion-list>
-    <ion-item *ngFor="let item of arrData; let i = index" (click)="deleteItem(i)">
-      {{item.$value}}
-    </ion-item>
-  </ion-list>
 
   <ion-list>
     <ion-item>

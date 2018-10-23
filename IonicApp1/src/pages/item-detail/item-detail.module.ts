@@ -8,7 +8,7 @@ import { ItemDetailPage } from './item-detail';
     ItemDetailPage,
   ],
   imports: [
-    IonicPageModule.forChild(ItemDetailPage),
+    IonicPageModule.forChild(ItemDetailPage)
   ],
   exports: [
     ItemDetailPage

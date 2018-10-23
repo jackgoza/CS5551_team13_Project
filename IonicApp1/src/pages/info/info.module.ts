@@ -8,7 +8,7 @@ import { InfoPage } from './info';
     InfoPage,
   ],
   imports: [
-    IonicPageModule.forChild(InfoPage),
+    IonicPageModule.forChild(InfoPage)
   ],
   exports: [
     InfoPage

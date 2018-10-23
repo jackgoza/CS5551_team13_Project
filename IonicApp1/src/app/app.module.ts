@@ -10,7 +10,6 @@ import { Items } from '../mocks/providers/items';
 import { Settings, User, Api } from '../providers';
 import { MyApp } from './app.component';
 
-import {MovieService} from "../services/rest/movie-service";
 import {APIInfoPage} from "../pages/APIinfo/APIinfo";
 import {HttpModule} from "@angular/http";
 import { LoginServiceProvider } from '../providers/login-service/login-service';
@@ -22,10 +21,12 @@ import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFireAuthModule} from  "angularfire2/auth";
 import {ItemCreatePage} from "../pages/item-create/item-create";
+
 import firebase from 'firebase';
 firebase.initializeApp(FIREBASE_CONFIG);
-
-import {Base64} from '@ionic-native/base64'
+import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
+import {WalmartLab} from "../services/rest/walmartLab";
+import {AmazonAws} from "../services/rest/amazon";
 
 export function provideSettings(storage: Storage) {
   /**
@@ -71,14 +72,15 @@ export function provideSettings(storage: Storage) {
     Camera,
     SplashScreen,
     StatusBar,
-    MovieService,
-    Base64,
+    WalmartLab,
+    AmazonAws,
     GooglePlus,
     NativeStorage,
     { provide: Settings, useFactory: provideSettings, deps: [Storage] },
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    LoginServiceProvider
+    LoginServiceProvider,
+    GoogleCloudVisionServiceProvider
   ]
 })
 export class AppModule { }

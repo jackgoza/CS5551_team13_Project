@@ -8,7 +8,7 @@ import { MessagenewPage } from './messagenew';
     MessagenewPage,
   ],
   imports: [
-    IonicPageModule.forChild(MessagenewPage),
+    IonicPageModule.forChild(MessagenewPage)
   ],
   exports: [
     MessagenewPage

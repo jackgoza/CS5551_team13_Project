@@ -7,7 +7,7 @@ import { TutorialPage } from './tutorial';
     TutorialPage,
   ],
   imports: [
-    IonicPageModule.forChild(TutorialPage),
+    IonicPageModule.forChild(TutorialPage)
   ],
   exports: [
     TutorialPage

@@ -1,8 +1,8 @@
 export const FIREBASE_CONFIG =  {
-  apiKey: "Your Api Key",
-  authDomain: "YourName.firebaseapp.com",
+  apiKey: "AIzaSyCLSmTEPyPd8lKsjGC2xtVOPgUq5fHDpPs",
+  authDomain: "asemax226.firebaseapp.com",
   databaseURL: "https://asemax226.firebaseio.com",
-  projectId: "Your Project ID",
-  storageBucket: "YourName.appspot.com",
-  messagingSenderId: "Your ID"
+  projectId: "asemax226",
+  storageBucket: "asemax226.appspot.com",
+  messagingSenderId: "489123086268"
 };

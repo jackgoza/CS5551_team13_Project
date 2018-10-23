@@ -1,9 +1,9 @@
 <ion-header>
 
   <ion-navbar color="primary">
-    <ion-title text-center>{{ 'LOGIN_TITLE' }}</ion-title>
+    <ion-title text-center>Login</ion-title>
     <ion-buttons end>
-      <button ion-button (click)="signup1()">{{ 'SIGNUP_BUTTON' }}</button>
+      <button ion-button (click)="signup1()">Sign up</button>
     </ion-buttons>
   </ion-navbar>
 
@@ -21,12 +21,12 @@
       <ion-label floating>Password</ion-label>
       <ion-input type="password" [(ngModel)]="user.password"></ion-input>
     </ion-item>
-    <button margin-top="10px" ion-button color="primary" block (click)="doLogin(user)">{{ 'LOGIN_BUTTON' }}</button>
+    <button margin-top="10px" ion-button color="primary" block (click)="doLogin(user)">Login</button>
   </ion-list>
 
 
   <div padding text-center>
-    <a color="primary">{{ 'LOGIN_OPTION' }}</a>
+    <a color="primary">Sign in by other accounts</a>
   </div>
   <ion-buttons text-center>
     <button ion-button round color="facebook">Facebook</button>
@@ -38,9 +38,9 @@
 <ion-footer>
   <ion-navbar>
     <ion-buttons text-center>
-      <button ion-button (click)="signup1()">{{ 'SIGNUP_BUTTON' }}</button>
+      <button ion-button (click)="signup1()">Sign up</button>
       <button ion-button><b>|</b></button>
-      <button ion-button>{{ 'FORGOT_PASSWORD' }}</button>
+      <button ion-button>Forgot Password?</button>
     </ion-buttons>
 
   </ion-navbar>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, } from 'ionic-angular';
-
+import {IonicPage, NavController,} from 'ionic-angular';
+import {WatchingListPage} from "../watching-list/watching-list";
 
 @IonicPage()
 @Component({
@@ -8,4 +8,13 @@ import { IonicPage, } from 'ionic-angular';
   templateUrl: 'messagenew.html'
 })
 export class MessagenewPage {
+
+  constructor(
+    public navCtrl: NavController) {
+  }
+
+  addWatchingList() {
+    this.navCtrl.setRoot('WatchingListPage')
+  }
+
 }

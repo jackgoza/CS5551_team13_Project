@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, ToastController } from 'ionic-angular';
-import { GooglePlus } from "@ionic-native/google-plus";
-import { MainPage } from '../';
-import { LoadingController, Loading } from "ionic-angular";
-import { NativeStorage } from "@ionic-native/native-storage";
-import { SettingsPage } from "../settings/settings";
-import { User } from "../../models/user";
-import { AngularFireAuth } from "angularfire2/auth";
+import { IonicPage, NavController } from 'ionic-angular';
+import {GooglePlus} from "@ionic-native/google-plus";
+import {LoadingController} from "ionic-angular";
+import {NativeStorage} from "@ionic-native/native-storage";
+import {SettingsPage} from "../settings/settings";
+import {User} from "../../models/user";
+import {AngularFireAuth} from "angularfire2/auth";
 
 @IonicPage()
 @Component({
@@ -16,15 +15,14 @@ import { AngularFireAuth } from "angularfire2/auth";
 export class LoginPage {
   user = {} as User;
 
+  private loginErrorString: string;
   constructor(public navCtrl: NavController,
-    public toastCtrl: ToastController,
     private afAuth: AngularFireAuth,
-    private toast: ToastController,
     public googlePlus: GooglePlus, public loadingCtrl: LoadingController, public nativeStorage: NativeStorage
-  ) {
-
+  )
+{
+  this.loginErrorString = "Unable to sign in. Please check your account information and try again.";
   }
-  
   async doLogin(user: User) {
     try {
       const result = this.afAuth.auth.signInWithEmailAndPassword(user.email, user.password);
@@ -40,7 +38,7 @@ export class LoginPage {
     this.navCtrl.push('SignupPage');
   }
 
-  doGoogleLogin() {
+  doGoogleLogin(){
     let nav = this.navCtrl;
     let env = this;
     let loading = this.loadingCtrl.create({
@@ -54,13 +52,12 @@ export class LoginPage {
     })
       .then(function (users) {
         loading.dismiss();
-
         env.nativeStorage.setItem('user', {
           Google_name: users.displayName,
           Google_email: users.email,
           Google_picture: users.imageUrl
         })
-          .then(function () {
+          .then(function(){
             nav.push(SettingsPage);
           }, function (error) {
             console.log(error);
@@ -70,5 +67,8 @@ export class LoginPage {
       });
 
   }
+
+
+
 }
 

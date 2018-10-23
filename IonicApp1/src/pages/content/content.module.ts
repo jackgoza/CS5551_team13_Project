@@ -8,7 +8,7 @@ import { ContentPage } from './content';
     ContentPage,
   ],
   imports: [
-    IonicPageModule.forChild(ContentPage),
+    IonicPageModule.forChild(ContentPage)
   ],
   exports: [
     ContentPage

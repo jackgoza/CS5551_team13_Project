@@ -1,7 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController } from 'ionic-angular';
-
+import {IonicPage, NavController, ToastController} from 'ionic-angular';
 import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root } from '../';
+import {Profile} from "../../models/profile";
+import {AngularFireAuth} from "angularfire2/auth";
+import 'rxjs/add/operator/take';
+import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -21,7 +24,36 @@ export class TabsPage {
   tab4Title = " ";
   tab5Title = " ";
 
-  constructor(public navCtrl: NavController) {
+  profileData: AngularFireObject<Profile>;
 
+  constructor(
+    private toast: ToastController,
+    private afAuth: AngularFireAuth,
+    private afDatabase: AngularFireDatabase,
+    public navCtrl: NavController) {
+    this.tab1Title = "Home";
+    this.tab2Title = "Info";
+    this.tab3Title = "Search";
+    this.tab4Title = "Message";
+    this.tab5Title = "User";
   }
+  ionViewWillLoad() {
+    this.afAuth.authState.take(1).subscribe(data =>{
+      if(data && data.email && data.uid) {
+        this.toast.create({
+          message: "Welcome to DealSuperior",
+          duration: 2000
+        }).present();
+        this.profileData = this.afDatabase.object(`profile/${data.uid}`)
+      }
+      else {
+        this.toast.create({
+          message: 'Could not find authentication details',
+          duration: 2000
+        }).present();
+      }
+    });
+  }
+
+
 }
