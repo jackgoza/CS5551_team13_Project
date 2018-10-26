@@ -14,9 +14,9 @@ export class AmazonAws {
               private http:HttpClient) {
 
     this.amazonClient = amazon.createClient({
-      awsId: "jack",  //Id is not valid
-      awsSecret: "AKIAINC6RC45SCTAQQYQ",
-      awsTag: "aws Tag"
+      awsId: "jack",  //We have determined that we need an amazon associate account
+      awsSecret: "AKIAINC6RC45SCTAQQYQ", // and a corresponding key
+      awsTag: "aws Tag"  // unfortunately that takes money
     })
   }
   searchAmazonItems(itemAmazon) {
