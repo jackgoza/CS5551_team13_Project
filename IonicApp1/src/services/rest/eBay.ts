@@ -10,7 +10,7 @@ export class eBay {
   constructor(private http:HttpClient) {
   }
   searchapiItems(apiItemsName) {
-    var url = 'http://svcs.sandbox.ebay.com/services/search/FindingService/v1?GLOBAL-ID=EBAY-US&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=' + this.secret + '&keywords=' +encodeURI(apiItemsName);
+    var url = 'http://svcs.sandbox.ebay.com/services/search/FindingService/v1?GLOBAL-ID=EBAY-US&OPERATION-NAME=findItemsByKeywords&SERVICE-VERSION=1.0.0&SECURITY-APPNAME=' + this.secret + '&keywords=' +encodeURI(apiItemsName) + '&paginationInput.entriesPerPage=10';
     this.data = this.http.get(url).map(ite => (<any>ite));
     var response = this.data;
     return response;
