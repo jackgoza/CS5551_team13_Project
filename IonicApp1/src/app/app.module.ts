@@ -27,6 +27,8 @@ firebase.initializeApp(FIREBASE_CONFIG);
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import {WalmartLab} from "../services/rest/walmartLab";
 import {AmazonAws} from "../services/rest/amazon";
+import { ConnectivityServiceProvider } from '../providers/connectivity-service/connectivity-service';
+import { GoogleMapsProvider } from '../providers/google-maps/google-maps';
 
 export function provideSettings(storage: Storage) {
   /**
@@ -80,7 +82,9 @@ export function provideSettings(storage: Storage) {
     // Keep this to enable Ionic's runtime error handling during development
     { provide: ErrorHandler, useClass: IonicErrorHandler },
     LoginServiceProvider,
-    GoogleCloudVisionServiceProvider
+    GoogleCloudVisionServiceProvider,
+    ConnectivityServiceProvider,
+    GoogleMapsProvider
   ]
 })
 export class AppModule { }
