@@ -6,7 +6,9 @@ import { LoginPage } from "../login/login";
 import { AngularFireAuth } from "angularfire2/auth";
 import { AngularFireDatabase } from "angularfire2/database";
 import { ProfilePage } from "../profile/profile";
-import { AngularFireObject } from 'angularfire2/database';
+import { FirebaseListObservable } from 'angularfire2/database';
+import {DiscoveryPage} from "../discovery/discovery";
+import {StarsPage} from "../stars/stars";
 
 @IonicPage()
 @Component({
@@ -15,7 +17,7 @@ import { AngularFireObject } from 'angularfire2/database';
 })
 export class SettingsPage {
   // userData = [];
-  profileData: AngularFireObject<any>;
+  profileData: FirebaseListObservable<any>;
   private status1: string;
   private buttonControl: boolean;
 
@@ -25,12 +27,15 @@ export class SettingsPage {
     private afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth,
     private toast: ToastController) {
+
     this.afAuth.authState.take(1).subscribe(data => {
       if (data && data.email && data.uid) {
+        // @ts-ignore
         this.profileData = this.afDatabase.object(`profile/${data.uid}`);
         if (this.profileData) {
         }
         else {
+          // @ts-ignore
           this.profileData = this.afDatabase.object(`profile`);
         }
         this.status1 = "Logout";
@@ -41,6 +46,7 @@ export class SettingsPage {
           message: 'Please Login',
           duration: 2000
         }).present();
+        // @ts-ignore
         this.profileData = this.afDatabase.object(`profile`)
         this.status1 = "Login";
         this.buttonControl = false;
@@ -76,6 +82,12 @@ export class SettingsPage {
   buttonDisabled() {
     return !this.buttonControl;
   }
+  toDiscovery() {
+    this.navCtrl.push('DiscoveryPage');
+  }
 
+  toStars() {
+    this.navCtrl.push('StarsPage');
 
+  }
 }

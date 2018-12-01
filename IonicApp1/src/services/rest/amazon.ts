@@ -11,7 +11,7 @@ export class AmazonAws {
   data: Observable<any>;
   amazonClient: any;
   constructor(
-              private http:HttpClient) {
+    private http:HttpClient) {
 
     this.amazonClient = amazon.createClient({
       awsId: "jack",  //We have determined that we need an amazon associate account

@@ -13,21 +13,52 @@
     </button>
   </div>
 
+
   <ion-list>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="http://www.runoob.com/try/demo_source/license-to-ill.jpg">
+
+    <ion-item-sliding *ngFor="let val of watchinglist; let i = index">
+      <ion-item>
+        {{val.$value}}
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button (click)="deleteItemH(i)"><ion-icon name="clipboard"></ion-icon>Delete</button>
+        <button ion-button color="secondary" (click)="getItemsValue(val.$value)"><ion-icon name="send"></ion-icon>Check</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+
+  <ion-list>
+    <ion-item *ngFor="let item of itemsW; let i = index" (click)="itemDetailH(item)">
+      <ion-thumbnail item-left>
+        <img src="{{item.imageURL}}"/>
       </ion-thumbnail>
-      <h2>Weezer</h2>
-      <p>Blue Album</p>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="http://www.runoob.com/try/demo_source/dookie.jpg">
-      </ion-thumbnail>
-      <h2>Smashing Pumpkins</h2>
-      <p>Siamese Dream</p>
+      <h2>{{item.name}}</h2>
+      <p class="item-description">Price: {{item.price}}</p>
+      <p class="item-description">Rating: {{item.rating}}</p>
+      <p class="item-description">Store: {{item.store}}</p>
     </ion-item>
   </ion-list>
+
+  <!--<ion-list>-->
+    <!--<ion-item>-->
+      <!--<ion-thumbnail item-start>-->
+        <!--<img src="{{shareWItems.shareWal.imageURL}}">-->
+      <!--</ion-thumbnail>-->
+      <!--<h2>{{shareWItems.shareWal.name}}</h2>-->
+      <!--<p>{{shareWItems.shareWal.price}}</p>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="arrow-dropdown"
+      pullingText="Pull to refresh"
+      refreshingSpinner="circles"
+      refreshingText="Refreshing...">
+    </ion-refresher-content>
+  </ion-refresher>
 
 </ion-content>

@@ -25,7 +25,7 @@ export class GoogleCloudVisionServiceProvider {
             {
               //"type": "LABEL_DETECTION"
               "type": "WEB_DETECTION",
-              "maxResults": "3"
+              "maxResults": "6"
             }
           ]
         }

@@ -7,12 +7,43 @@
 </ion-header>
 
 
-<ion-content>
-  <div class="item-profile" text-center #profilePic [style.background-image]="'url(' + item.profilePic + ')'">
+<ion-content padding>
+
+  <div *ngIf="item" class="selection">
+
+    <ion-card>
+      <ion-item>
+        <h2 text-center text-wrap>{{item.name}}</h2>
+        <img style="display: block;margin-left: auto; margin-right: auto;width: 200px; height: 200px;" src="{{item.imageURL}}"/>
+
+        <ion-icon name="ios-arrow-down" item-right color="primary" *ngIf="isShow"    (click)="isShow=!isShow"></ion-icon>
+        <ion-icon name="ios-arrow-forward" item-right color="primary" *ngIf="!isShow" (click)="isShow=!isShow"></ion-icon>
+      </ion-item>
+
+      <ion-item>
+        <h2 class="item-description">Price: </h2>
+        <span item-end><b end style="color: #f53d3d;">${{item.price}}</b></span>
+      </ion-item>
+      <ion-item>
+        <p class="item-description">Rating: {{item.rating}}</p>
+        <p class="item-description">Store: {{item.store}}</p>
+        <p class="item-description">Recommend userID: {{item.userID}}</p>
+        <p class="item-description">View Times: {{item.shareTimes}}</p>
+      </ion-item>
+
+      <ion-item  *ngIf="isShow" text-wrap>
+        <h3><b>Description:</b></h3>
+        {{item.description}}
+      </ion-item>
+
+    </ion-card>
+
+    <ion-buttons text-center>
+      <button ion-button  color="twitter" (click)="starItemH(item)">Star<ion-icon name="star-outline"></ion-icon></button>
+      <button ion-button  color="danger" (click)="openPage(item)">Buy<ion-icon name="arrow-round-forward"></ion-icon></button>
+    </ion-buttons>
+
   </div>
 
-  <div class="item-detail" padding>
-    <h2>{{item.name}}</h2>
-    <p>{{item.about}}</p>
-  </div>
+
 </ion-content>

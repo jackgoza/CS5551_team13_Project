@@ -4,7 +4,7 @@ import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root, Tab6Root } from '../'
 import {Profile} from "../../models/profile";
 import {AngularFireAuth} from "angularfire2/auth";
 import 'rxjs/add/operator/take';
-import { AngularFireDatabase, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 
 @IonicPage()
 @Component({
@@ -26,7 +26,7 @@ export class TabsPage {
   tab5Title = " ";
   tab6Title = " ";
 
-  profileData: AngularFireObject<Profile>;
+  profileData: FirebaseListObservable<Profile>;
 
   constructor(
     private toast: ToastController,
@@ -34,7 +34,7 @@ export class TabsPage {
     private afDatabase: AngularFireDatabase,
     public navCtrl: NavController) {
     this.tab1Title = "Home";
-    this.tab2Title = "Info";
+    this.tab2Title = "Map";
     this.tab3Title = "Search";
     this.tab4Title = "Message";
     this.tab5Title = "User";
@@ -45,14 +45,17 @@ export class TabsPage {
       if(data && data.email && data.uid) {
         this.toast.create({
           message: "Welcome to DealSuperior",
-          duration: 2000
+          duration: 2000,
+          position: 'top'
         }).present();
+        // @ts-ignore
         this.profileData = this.afDatabase.object(`profile/${data.uid}`)
       }
       else {
         this.toast.create({
           message: 'Could not find authentication details',
-          duration: 2000
+          duration: 2000,
+          position: 'top'
         }).present();
       }
     });

@@ -1,36 +1,22 @@
 <ion-header>
     <ion-navbar color="primary">
-      <ion-title text-center>Info</ion-title>
+      <ion-title text-center>Store Map</ion-title>
     </ion-navbar>
+
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="query" (ionInput)="searchPlace()"></ion-searchbar>
+  </ion-toolbar>
+  <ion-list>
+    <ion-item *ngFor="let place of places" (click)="selectPlace(place)">{{place.description}}</ion-item>
+  </ion-list>
+
 </ion-header>
 
 <ion-content>
-  <ion-searchbar margin-top="5px" placeholder="Please Input Product name"></ion-searchbar>
-
-  <div padding>
-    <button ion-button color="primary" block (click)="uploaditems()">Upload my discovers</button>
+  <div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
   </div>
-
-
-
-  <ion-list>
-    <ion-item>
-      <h1>Top Best Product List</h1>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="https://www.github.com/MaxGolden/CS5551_Advanced_Software_Engineering/blob/master/ICP6/Documentation/Screenshots/4loginBandHellosidebar.png">
-      </ion-thumbnail>
-      <h2>Weezer</h2>
-      <p>Blue Album</p>
-    </ion-item>
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="../../assets/img/speakers/lion.jpg">
-      </ion-thumbnail>
-      <h2>Smashing Pumpkins</h2>
-      <p>Siamese Dream</p>
-    </ion-item>
-  </ion-list>
-
+  <div #map id="map">
+    <ion-spinner></ion-spinner>
+  </div>
 </ion-content>

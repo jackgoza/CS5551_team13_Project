@@ -5,6 +5,10 @@
 </ion-header>
 
 <ion-content class="home" padding>
+  <div>
+    <button ion-button small block color="primary"  (click)="presentPrompt(apiItem)">Upload my discover</button>
+  </div>
+
   <div *ngIf="apiItem" class="selection">
 
     <ion-card>
@@ -12,8 +16,8 @@
         <h2 text-center text-wrap>{{apiItem.name}}</h2>
         <img style="display: block;margin-left: auto; margin-right: auto;width: 120px; height: 120px;" src="{{apiItem.largeImage}}"/>
 
-        <ion-icon name="ios-arrow-down" item-right  *ngIf="isShow"    (click)="isShow=!isShow"></ion-icon>
-        <ion-icon name="ios-arrow-forward" item-right *ngIf="!isShow" (click)="isShow=!isShow"></ion-icon>
+        <ion-icon name="ios-arrow-down" item-right color="primary" *ngIf="isShow"    (click)="isShow=!isShow"></ion-icon>
+        <ion-icon name="ios-arrow-forward" item-right color="primary" *ngIf="!isShow" (click)="isShow=!isShow"></ion-icon>
       </ion-item>
       <ion-item  *ngIf="isShow" text-wrap>
         <h3><b>Description:</b></h3>
@@ -36,11 +40,54 @@
         <p class="item-description">Reviews: {{apiItem.numReviews}}</p>
       </ion-item>
 
-      <ion-item margin-left="100px">
+      <ion-item margin-left="100px" style="width: 95%">
         <ion-icon name="bookmark" item-left color="primary"></ion-icon>
         <h4>Stock: {{apiItem.stock}}</h4>
+
+        <ion-icon item-end name="ios-arrow-down" color="primary" *ngIf="isShow1"    (click)="isShow1=!isShow1"></ion-icon>
+        <ion-icon item-end name="ios-arrow-forward" color="primary" *ngIf="!isShow1" (click)="isShow1=!isShow1"></ion-icon>
       </ion-item>
+
+      <ion-buttons *ngIf="isShow1" text-center padding>
+        <button ion-button small color="facebook" (click)="shareItemWal(apiItem)">Share<ion-icon name="share-alt"></ion-icon></button>
+        <button ion-button small color="twitter" (click)="starItemWal(apiItem)">Star<ion-icon name="star-outline"></ion-icon></button>
+        <button ion-button small color="danger"  >Buy<ion-icon name="arrow-round-forward"></ion-icon></button>
+      </ion-buttons>
     </ion-card>
+
+    <ion-card>
+      <ion-item>
+        <ion-avatar item-left image-large>
+          <img src="../../assets/img/logo_ebay.png"/>
+        </ion-avatar>
+        <span item-left>eBay</span>
+        <span item-end><b end style="color: #f53d3d;">${{ebayItem.sellingStatus[0].currentPrice[0].__value__}}</b></span>
+      </ion-item>
+
+      <ion-item margin-left="100px">
+        <ion-icon item-left name="podium" color="primary"></ion-icon>
+        <h4>Shipping: {{ebayItem.shippingInfo[0].shipToLocations[0]}}</h4>
+        <p class="item-description">One Day Shipping: {{ebayItem.shippingInfo[0].oneDayShippingAvailable[0]}}</p>
+      </ion-item>
+
+      <ion-item margin-left="100px" style="width: 95%">
+        <ion-icon name="bookmark" item-left color="primary"></ion-icon>
+        <h4>Stock: {{ebayItem.listingInfo[0].buyItNowAvailable[0]}}</h4>
+
+        <ion-icon item-end name="ios-arrow-down" color="primary" *ngIf="isShow2"    (click)="isShow2=!isShow2"></ion-icon>
+        <ion-icon item-end name="ios-arrow-forward" color="primary" *ngIf="!isShow2" (click)="isShow2=!isShow2"></ion-icon>
+      </ion-item>
+
+      <ion-buttons *ngIf="isShow2" text-center padding>
+        <button ion-button small color="facebook">Share<ion-icon name="share-alt"></ion-icon></button>
+        <button ion-button small color="twitter" >Star<ion-icon name="star-outline"></ion-icon></button>
+        <button ion-button small color="danger" href="#"  >Buy<ion-icon name="arrow-round-forward"></ion-icon></button>
+        <!--(click)="window.open('{{ebayItem.viewItemURL[0]}}', '_system', 'location=yes');"-->
+      </ion-buttons>
+
+
+    </ion-card>
+
 
     <ion-card>
       <ion-item>
@@ -51,22 +98,5 @@
       </ion-item>
     </ion-card>
 
-    <ion-card>
-      <ion-item>
-        <ion-avatar item-left image-large>
-          <img src="../../assets/img/logo_ebay.png"/>
-        </ion-avatar>
-        <h2>eBay</h2>
-      </ion-item>
-    </ion-card>
-
-    <ion-card>
-      <ion-item>
-        <ion-avatar item-left image-large>
-          <img src="../../assets/img/logo_bestbuy.png"/>
-        </ion-avatar>
-        <h2>BestBuy</h2>
-      </ion-item>
-    </ion-card>
   </div>
 </ion-content>

@@ -12,25 +12,29 @@ import { MyApp } from './app.component';
 
 import {APIInfoPage} from "../pages/APIinfo/APIinfo";
 import {HttpModule} from "@angular/http";
+import {HTTP} from "@ionic-native/http";
 import { LoginServiceProvider } from '../providers/login-service/login-service';
 import {GooglePlus} from "@ionic-native/google-plus";
 import {NativeStorage} from "@ionic-native/native-storage";
-
+import { InAppBrowser} from "@ionic-native/in-app-browser";
 import {AngularFireModule} from 'angularfire2';
 import {AngularFireDatabaseModule} from 'angularfire2/database';
 import {FIREBASE_CONFIG} from "./app.firebase.config";
 import {AngularFireAuthModule} from  "angularfire2/auth";
 import {ItemCreatePage} from "../pages/item-create/item-create";
+import {ItemDetailPage} from "../pages/item-detail/item-detail";
+
+import { Connectivity } from '../providers/connectivity-service/connectivity-service';
+import { GoogleMaps  } from '../providers/google-maps/google-maps';
+import { Network } from '@ionic-native/network';
+import { Geolocation } from '@ionic-native/geolocation';
 
 import firebase from 'firebase';
 firebase.initializeApp(FIREBASE_CONFIG);
 import { GoogleCloudVisionServiceProvider } from '../providers/google-cloud-vision-service/google-cloud-vision-service';
 import {WalmartLab} from "../services/rest/walmartLab";
 import {AmazonAws} from "../services/rest/amazon";
-import { Connectivity } from '../providers/connectivity-service/connectivity-service';
-import { GoogleMaps } from '../providers/google-maps/google-maps';
-import { Network } from '@ionic-native/network';
-import { Geolocation } from '@ionic-native/geolocation';
+import {EbayLab} from "../services/rest/ebay";
 
 export function provideSettings(storage: Storage) {
   /**
@@ -52,6 +56,7 @@ export function provideSettings(storage: Storage) {
     MyApp,
     APIInfoPage,
     ItemCreatePage,
+    ItemDetailPage
   ],
   imports: [
     BrowserModule,
@@ -68,6 +73,7 @@ export function provideSettings(storage: Storage) {
     MyApp,
     APIInfoPage,
     ItemCreatePage,
+    ItemDetailPage
   ],
   providers: [
     Api,
@@ -77,6 +83,8 @@ export function provideSettings(storage: Storage) {
     SplashScreen,
     StatusBar,
     WalmartLab,
+    EbayLab,
+    InAppBrowser,
     AmazonAws,
     GooglePlus,
     NativeStorage,

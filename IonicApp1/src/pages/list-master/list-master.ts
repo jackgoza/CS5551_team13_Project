@@ -4,10 +4,11 @@ import { APIInfoPage } from "../APIinfo/APIinfo";
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 import { GoogleCloudVisionServiceProvider} from "../../providers/google-cloud-vision-service/google-cloud-vision-service";
-import { AngularFireModule } from 'angularfire2';
-import { AngularFireDatabase, AngularFireList, AngularFireObject } from 'angularfire2/database';
+import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
 import {WalmartLab} from "../../services/rest/walmartLab";
 import {AmazonAws} from "../../services/rest/amazon";
+import {errorHandler} from "@angular/platform-browser/src/browser";
+import {EbayLab} from "../../services/rest/ebay";
 
 // @ts-ignore
 @IonicPage()
@@ -17,10 +18,11 @@ import {AmazonAws} from "../../services/rest/amazon";
 })
 export class ListMasterPage {
   Dresult=[];
-  apiItems: Array<any>;
-  picItems: Array<any>;
+  apiItems: any;
+  ebayItem: any;
+  picItems: any;
   loading: Loading;
-  PicItems: AngularFireList<any>;
+  PicItems: FirebaseListObservable<any>;
   constructor(
     private vision: GoogleCloudVisionServiceProvider,
     private afdb: AngularFireDatabase,
@@ -28,6 +30,7 @@ export class ListMasterPage {
     public navCtrl: NavController,
     private walmartLab: WalmartLab,
     private amazonAWS: AmazonAws,
+    private ebayLab: EbayLab,
     public camera: Camera,
     private actionSheetCtrl: ActionSheetController,
     public loadingCtrl: LoadingController) {
@@ -119,22 +122,36 @@ export class ListMasterPage {
       this.walmartLab.searchapiItems(event.target.value).subscribe(
         data => {
           this.apiItems = data.items;
-          console.log(data);
+          // console.log(data);
         },
         err => {
           console.log(err);
         },
         () => console.log('Product Search Complete')
       );
+
     }
   }
 
   selectapiItem(event, apiItem) {
-    console.log(apiItem);
-    this.navCtrl.push(APIInfoPage, {
-      apiItem: apiItem
-    });
+    this.showLoader();
+    this.ebayLab.searchebayItems(apiItem.name).subscribe(data => {
+        this.ebayItem = data;
+        console.log(this.ebayItem);
+      },
+      err => {
+        console.log(err);
+      },
+      () => console.log('Product Search Complete')
+    );
+    // apiItem: apiItem,
+    setTimeout(()=>{
+      this.loading.dismissAll();
+      this.navCtrl.push(APIInfoPage, {
+        ebayItem: this.ebayItem,apiItem: apiItem });
+    },2000);
   }
+
   selectapiItem1(event, picItem) {
     this.showLoader();
     this.walmartLab.searchapiItems(picItem.description).subscribe(
@@ -147,12 +164,20 @@ export class ListMasterPage {
       },
       () => console.log('Product Search Complete')
     );
+    this.ebayLab.searchebayItems(picItem.description).subscribe(data => {
+        this.ebayItem = data;
+        console.log(this.ebayItem);
+      },
+      err => {
+        console.log(err);
+      },
+      () => console.log('Product Search Complete')
+    );
     setTimeout(()=>{
       this.loading.dismissAll();
       this.navCtrl.push(APIInfoPage, {
-        apiItem: this.apiItems
-      });
-    },1000);
+        ebayItem: this.ebayItem,apiItem: this.apiItems });
+    },2000);
   }
 
   saveResults(imageData, results) {
@@ -172,6 +197,7 @@ export class ListMasterPage {
   deleteResult(i) {
     this.afdb.list("/items/").remove(this.PicItems[i]);
   }
+
   showLoader(){
     this.loading = this.loadingCtrl.create({
       content:'Loading...'
