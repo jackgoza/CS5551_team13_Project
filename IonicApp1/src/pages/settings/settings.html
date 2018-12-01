@@ -1,0 +1,37 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title text-center>Username</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-thumbnail item-start id="PicUser">
+        <img [src]="'data:image/png;base64,' + (profileData | async)?.imageData"/>
+      </ion-thumbnail>
+      <h2>Welcome </h2>
+      <!--<p class="itemdis" *ngFor="let item of userData">{{item.email}}</p>-->
+      <p id="NameUser">{{(profileData | async)?.Profile.username}}</p>
+      <ion-buttons end>
+        <button ion-button [disabled]="buttonDisabled()" small color="light" (click)="ProfileCreate()"><ion-icon name="contact"></ion-icon>Profile</button>
+        <button ion-button small color="light" (click)="Logout1()">{{status1}}</button>
+      </ion-buttons>
+    </ion-item>
+
+    <ion-item>
+      <h2>Account Setting</h2>
+    </ion-item>
+  </ion-list>
+
+  <!--<ion-list>-->
+    <!--<ion-item>-->
+      <!--<ion-thumbnail item-start>-->
+        <!--<img src={{Google_picture}}>-->
+      <!--</ion-thumbnail>-->
+      <!--<h2> {{Google_name}}</h2>-->
+      <!--<p class="itemdis" (click)="doGoogleLogout()">Logout</p>-->
+    <!--</ion-item>-->
+  <!--</ion-list>-->
+
+</ion-content>

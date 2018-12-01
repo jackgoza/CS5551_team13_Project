@@ -4,8 +4,20 @@
 /dist
 /tmp
 /out-tsc
+/build
+*/build
+/build/
+www/
+*./www.*
+IonicApp1/www/
+
+# machine specifc things
+/platforms
+/plugins
 
 # dependencies
+*/node_modules
+/node_modules/
 /node_modules
 
 # IDEs and editors
