@@ -1,12 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Platform } from 'ionic-angular';
-// @ts-ignore
 import { Connectivity } from '../connectivity-service/connectivity-service';
 import { Geolocation } from '@ionic-native/geolocation';
-
+ 
 @Injectable()
 export class GoogleMaps {
-
+ 
   mapElement: any;
   pleaseConnect: any;
   map: any;

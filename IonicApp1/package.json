@@ -25,18 +25,23 @@
     "@ionic-native/base64": "^4.15.0",
     "@ionic-native/camera": "4.3.3",
     "@ionic-native/core": "~4.12.0",
+    "@ionic-native/geolocation": "^4.17.0",
     "@ionic-native/google-plus": "^4.15.0",
     "@ionic-native/native-storage": "^4.15.0",
+    "@ionic-native/network": "^4.17.0",
     "@ionic-native/splash-screen": "~4.12.0",
     "@ionic-native/status-bar": "~4.12.0",
     "@ionic/pro": "2.0.3",
     "@ionic/storage": "2.2.0",
+    "@types/google-maps": "^3.2.0",
     "amazon-product-api": "^0.4.4",
     "angularfire2": "^5.1.0",
     "cordova-browser": "5.0.4",
     "cordova-plugin-device": "^2.0.2",
+    "cordova-plugin-geolocation": "^4.0.1",
     "cordova-plugin-ionic-keyboard": "^2.1.3",
     "cordova-plugin-ionic-webview": "^2.2.0",
+    "cordova-plugin-network-information": "^2.0.1",
     "cordova-plugin-splashscreen": "^5.0.2",
     "cordova-plugin-statusbar": "^2.4.2",
     "cordova-plugin-whitelist": "^1.3.3",
@@ -51,7 +56,7 @@
     "zone.js": "0.8.26"
   },
   "devDependencies": {
-    "@ionic/app-scripts": "3.2.0",
+    "@ionic/app-scripts": "^3.2.0",
     "typescript": "~2.6.2"
   },
   "jest": {
@@ -91,7 +96,9 @@
       "cordova-plugin-device": {},
       "cordova-plugin-splashscreen": {},
       "cordova-plugin-ionic-webview": {},
-      "cordova-plugin-ionic-keyboard": {}
+      "cordova-plugin-ionic-keyboard": {},
+      "cordova-plugin-geolocation": {},
+      "cordova-plugin-network-information": {}
     },
     "platforms": [
       "browser"

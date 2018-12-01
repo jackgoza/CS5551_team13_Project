@@ -21,7 +21,7 @@ export class Connectivity {
       return navigator.onLine;
     }
   }
-
+  
   isOffline(): boolean {
     if(this.onDevice && this.network.type){
       return this.network.type == 'none';
