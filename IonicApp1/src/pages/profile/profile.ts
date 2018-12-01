@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import {ActionSheetController, AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
 import {AngularFireAuth} from "angularfire2/auth";
 import {Profile} from "../../models/profile";
-import {AngularFireDatabase, AngularFireList} from "angularfire2/database";
+import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
 import {Camera, CameraOptions} from "@ionic-native/camera";
 
 @IonicPage()
@@ -12,11 +12,9 @@ import {Camera, CameraOptions} from "@ionic-native/camera";
 })
 export class ProfilePage {
   profile = {} as Profile;
-  ProPicItems: AngularFireList<any[]>;
-  SaveProPicItems:AngularFireList<any[]>;
+  ProPicItems: FirebaseListObservable<any[]>;
+  SaveProPicItems:FirebaseListObservable<any[]>;
   private UploadPicItems: any;
-  // @ts-ignore
-  // UploadPicItems: [];
   constructor(
     private afAuth: AngularFireAuth,
     public navCtrl: NavController,
@@ -33,11 +31,6 @@ export class ProfilePage {
       // @ts-ignore
       this.SaveProPicItems = this.afDatabase.object(`/profile/${data.uid}`)
     });
-      // this.afDatabase.list("profile/").subscribe(_data => {
-      //   // @ts-ignore
-      //   this.ProPicItems = _data;
-      //   console.log(this.ProPicItems);
-      // });
   }
 
   createProfile() {

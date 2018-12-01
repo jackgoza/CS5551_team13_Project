@@ -11,11 +11,11 @@ export class AmazonAws {
   data: Observable<any>;
   amazonClient: any;
   constructor(
-              private http:HttpClient) {
+    private http:HttpClient) {
 
     this.amazonClient = amazon.createClient({
-      awsId: "jack",  //Id is not valid
-      awsSecret: "AKIAINC6RC45SCTAQQYQ",
+      awsId: "AKIAJN735HSERWVGO5KQ",
+      awsSecret: "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",
       awsTag: "aws Tag"
     })
   }

@@ -9,6 +9,7 @@
     <button ion-button color="primary" block (click)="Pictake1()">Take a Picture</button>
   </div>
 
+
   <ion-item>
     <ion-label color="primary" stacked icon-only="search">Search the Product</ion-label>
     <ion-input type="text" (input)="searchForapiItems($event, searchKey)"></ion-input>
@@ -17,10 +18,18 @@
   <ion-card *ngFor="let item of PicItems | async; let i = index " >
     <img (click)="deleteResult(i)" style="display: block;margin-left: auto; margin-right: auto;width: 240px; height: 240px;" [src]="'data:image/png;base64,' + item.imageData"/>
     <ion-card-content>
-      <ion-list no-lines>
-        <ion-list-header>Select the product name which you want</ion-list-header>
+      <ion-list>
+        <!--<ion-list-header>Select the product name which you want</ion-list-header>-->
         <!--<ion-item *ngFor="let label of item.results">{{label.description}}</ion-item>-->
-        <ion-item *ngFor="let label of picItems" (click)="selectapiItem1($event, label)">{{label.description}}</ion-item>
+        <ion-item-sliding *ngFor="let label of picItems">
+        <ion-item>
+          {{label.description}}
+        </ion-item>
+          <ion-item-options side="right">
+            <button ion-button (click)="favorite(item)"><ion-icon name="clipboard"></ion-icon>Edit</button>
+            <button ion-button color="secondary" (click)="selectapiItem1($event, label)"><ion-icon name="send"></ion-icon></button>
+          </ion-item-options>
+        </ion-item-sliding>
       </ion-list>
     </ion-card-content>
   </ion-card>

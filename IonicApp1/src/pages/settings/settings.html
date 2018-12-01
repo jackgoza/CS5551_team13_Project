@@ -18,20 +18,12 @@
         <button ion-button small color="light" (click)="Logout1()">{{status1}}</button>
       </ion-buttons>
     </ion-item>
+    <div padding>
+      <button ion-button color="light" block (click)="toDiscovery()">My discoveries</button>
+      <button ion-button color="light" block (click)="toStars()">My collections</button>
+    </div>
 
-    <ion-item>
-      <h2>Account Setting</h2>
-    </ion-item>
   </ion-list>
 
-  <!--<ion-list>-->
-    <!--<ion-item>-->
-      <!--<ion-thumbnail item-start>-->
-        <!--<img src={{Google_picture}}>-->
-      <!--</ion-thumbnail>-->
-      <!--<h2> {{Google_name}}</h2>-->
-      <!--<p class="itemdis" (click)="doGoogleLogout()">Logout</p>-->
-    <!--</ion-item>-->
-  <!--</ion-list>-->
 
 </ion-content>
