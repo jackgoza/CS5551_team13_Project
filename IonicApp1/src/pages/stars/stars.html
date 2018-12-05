@@ -11,14 +11,31 @@
     (ionCancel)="onCancel($event)">
   </ion-searchbar>
   <ion-list>
-    <ion-item *ngFor="let item of itemsHome; let i = index">
-      <ion-thumbnail item-left>
-        <img src="{{item.imageURL}}"/>
-      </ion-thumbnail>
-      <h2>{{item.name}}</h2>
-      <p class="item-description">Price: {{item.price}}</p>
-      <p class="item-description">Rating: {{item.rating}}</p>
-      <p class="item-description">Store: {{item.store}}</p>
-    </ion-item>
+
+    <ion-item-sliding *ngFor="let item of itemsHome; let i = index">
+      <ion-item>
+        <ion-thumbnail item-left>
+          <img src="{{item.imageURL}}"/>
+        </ion-thumbnail>
+        <h2>{{item.name}}</h2>
+        <p class="item-description"><b end style="color: #f53d3d;">Price:${{item.price}}</b>|<b end style="color: #AFAFAF;text-decoration:line-through">${{item.msrp}}</b></p>
+        <p class="item-description">Rating: {{item.rating}}</p>
+        <p class="item-description">Store: {{item.store}}</p>
+      </ion-item>
+      <ion-item-options side="right">
+        <button ion-button color="danger" (click)="deleteitemS(i)"><ion-icon name="trash"></ion-icon>Delete</button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <!---->
+    <!--<ion-item *ngFor="let item of itemsHome; let i = index">-->
+      <!--<ion-thumbnail item-left>-->
+        <!--<img src="{{item.imageURL}}"/>-->
+      <!--</ion-thumbnail>-->
+      <!--<h2>{{item.name}}</h2>-->
+      <!--<p class="item-description">Price: {{item.price}}</p>-->
+      <!--<p class="item-description">Rating: {{item.rating}}</p>-->
+      <!--<p class="item-description">Store: {{item.store}}</p>-->
+    <!--</ion-item>-->
   </ion-list>
 </ion-content>

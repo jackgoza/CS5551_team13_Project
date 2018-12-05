@@ -1,4 +1,4 @@
 export const environment = {
-  googleCloudVisionAPIKey: "AIzaSyBM-8OAGOsrPY5mSPqQGdkJEW5AF2Ts5KY"
+  googleCloudVisionAPIKey: "your key"
   // Using the browser key
 };

@@ -91,9 +91,19 @@ export class ItemDetailPage {
   }
 
   openPage(item) {
-    const options: InAppBrowserOptions = {
-      zoom: 'no'
-    };
-    const browser = this.iab.create(item.web, '_self', options);
+
+    if(item.web == "none" ) {
+      this.toast.create({
+        message: 'Sorry, the referrer did not upload the link',
+        duration: 2000,
+        position: 'top'
+      }).present();
+    }
+    else {
+      const options: InAppBrowserOptions = {
+        zoom: 'no'
+      };
+      const browser = this.iab.create(item.web, '_self', options);
+    }
   }
 }

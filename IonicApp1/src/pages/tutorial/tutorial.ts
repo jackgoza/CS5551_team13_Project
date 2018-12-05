@@ -29,6 +29,7 @@ export class TutorialPage {
       {
         title: "How to find the best deal",
         description: "When you search the product, not just the information from third parties, the recommendation or the best deal from other customers will show for you",
+        image: 'assets/img/ica-slidebox-img-2.png',
       },
       {
         title: "More fun?",

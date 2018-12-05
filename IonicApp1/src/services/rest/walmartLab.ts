@@ -10,17 +10,17 @@ export class WalmartLab {
   constructor(private http: HttpClient) {
   }
   searchapiItems(apiItemsName) {
-    var url = 'http://api.walmartlabs.com/v1/search?apiKey=vwtzj6yrpv53yrp62squshbm&lsPublisherId={Your%20LinkShare%20Publisher%20Id}&query='+encodeURI(apiItemsName);
+    // var url = 'http://api.walmartlabs.com/v1/search?apiKey=vwtzj6yrpv53yrp62squshbm&lsPublisherId={Your%20LinkShare%20Publisher%20Id}&query='+encodeURI(apiItemsName);
+    // // @ts-ignore
+    // this.data = this.http.get(url).map(ite => (<any>ite));
+    // var response = this.data;
+    // return response;
 
+    var url = 'https://ase5551-walmart.herokuapp.com/server';
     // @ts-ignore
-    this.data = this.http.get(url).map(ite => (<any>ite));
-    var response = this.data;
-    return response;
+    this.data = this.http.get(url,{params: {name: apiItemsName}}).map(ite => (<any>ite));
+    var response1 = this.data;
+    return response1;
 
-    // @ts-ignore
-    // this.http.get(url).map(ite => (<any>ite)).then(data =>{
-    //   this.data = data;
-    //   return this.data;
-    // });
   }
 }

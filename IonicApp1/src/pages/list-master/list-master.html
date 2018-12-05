@@ -23,6 +23,9 @@
         <!--<ion-item *ngFor="let label of item.results">{{label.description}}</ion-item>-->
         <ion-item-sliding *ngFor="let label of picItems">
         <ion-item>
+          <!--<ion-thumbnail item-left>-->
+            <!--<img src="{{little.largeImage}}"/>-->
+          <!--</ion-thumbnail>-->
           {{label.description}}
         </ion-item>
           <ion-item-options side="right">
@@ -43,7 +46,6 @@
       <h2>{{apiItem.name}}</h2>
       <p class="item-description">Model: {{apiItem.modelNumber}}</p>
       <p class="item-description">MSRP {{apiItem.msrp}}</p>
-
     </ion-item>
   </ion-list>
 

@@ -56,4 +56,9 @@ export class DiscoveryPage {
     })
   }
 
+  deleteitemD(i) {
+    this.afAuth.authState.take(1).subscribe(auth =>{
+      this.fdb.list(`product/${auth.uid}/myDeals`).remove(this.arrDataS[i]);
+    });
+  }
 }

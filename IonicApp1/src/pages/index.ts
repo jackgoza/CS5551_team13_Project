@@ -2,6 +2,7 @@
 export const FirstRunPage = 'TutorialPage';
 // export const FirstRunPage = 'TutorialPage';
 
+
 // The main page the user will see as they use the app over a long period of time.
 // Change this if not using tabs
 export const MainPage = 'TabsPage';
@@ -12,4 +13,3 @@ export const Tab2Root = 'InfoPage';
 export const Tab3Root = 'ListMasterPage';
 export const Tab4Root = 'MessagenewPage';
 export const Tab5Root = 'SettingsPage';
-export const Tab6Root = 'WorldPage';

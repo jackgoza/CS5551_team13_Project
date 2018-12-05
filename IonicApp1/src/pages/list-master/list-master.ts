@@ -19,6 +19,7 @@ import {EbayLab} from "../../services/rest/ebay";
 export class ListMasterPage {
   Dresult=[];
   apiItems: any;
+  imageItems: any;
   ebayItem: any;
   picItems: any;
   loading: Loading;
@@ -57,8 +58,11 @@ export class ListMasterPage {
                 this.vision.getLabels(imageData).subscribe((result) => {
                   // @ts-ignore
                   this.Dresult =  result.responses[0].webDetection.webEntities;
+
                   this.picItems = this.Dresult;
                   this.saveResults(imageData, this.Dresult);
+
+
                   this.loading.dismissAll()
 
                 }, err => {
@@ -148,8 +152,8 @@ export class ListMasterPage {
     setTimeout(()=>{
       this.loading.dismissAll();
       this.navCtrl.push(APIInfoPage, {
-        ebayItem: this.ebayItem,apiItem: apiItem });
-    },2000);
+        ebayItem: this.ebayItem, apiItem: apiItem });
+    },3000);
   }
 
   selectapiItem1(event, picItem) {
@@ -177,10 +181,23 @@ export class ListMasterPage {
       this.loading.dismissAll();
       this.navCtrl.push(APIInfoPage, {
         ebayItem: this.ebayItem,apiItem: this.apiItems });
-    },2000);
+    },3000);
   }
 
   saveResults(imageData, results) {
+
+    // for(let i = 0; i < 6; i++){
+    //   this.walmartLab.searchapiItems(results[i].description).subscribe(
+    //     data => {
+    //       this.imageItems.push({image:data.items[0]});
+    //       console.log(data);
+    //     },
+    //     err => {
+    //       console.log(err);
+    //     },
+    //     () => console.log('Product Search Complete')
+    //   );
+    // }
     this.PicItems.push({ imageData: imageData, results: results})
       .then(_ => { })
       // .catch(err => { this.showAlert(err) });

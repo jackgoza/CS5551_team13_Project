@@ -1,14 +1,14 @@
 import { Component, ViewChild } from '@angular/core';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { StatusBar } from '@ionic-native/status-bar';
-import { Nav, Platform } from 'ionic-angular';
+import { Nav, Platform} from 'ionic-angular';
 
 import { FirstRunPage } from '../pages';
-import { MainPage } from "../pages";
+import {MainPage} from "../pages";
 import { Settings } from '../providers';
-import { AngularFireAuth } from "angularfire2/auth";
-import { TabsPage } from "../pages/tabs/tabs";
-import { WelcomePage } from "../pages/welcome/welcome";
+import {AngularFireAuth} from "angularfire2/auth";
+import {TabsPage} from "../pages/tabs/tabs";
+import {WelcomePage} from "../pages/welcome/welcome";
 
 @Component({
   template: `<ion-menu [content]="content">
@@ -43,13 +43,12 @@ export class MyApp {
     { title: 'Login', component: 'LoginPage' },
     { title: 'Signup', component: 'SignupPage' },
     { title: 'Master Detail', component: 'ListMasterPage' },
-    { title: 'APIinfo', component: 'APIInfoPage' },
+    {title: 'APIinfo', component: 'APIInfoPage'},
     { title: 'Info', component: 'InfoPage' },
     { title: 'Messagenew', component: 'MessagenewPage' },
     { title: 'Menu', component: 'MenuPage' },
     { title: 'Settings', component: 'SettingsPage' },
-    { title: 'Search', component: 'SearchPage' },
-    { title: 'World', component: 'WorldPage' }
+    { title: 'Search', component: 'SearchPage' }
   ];
 
   constructor(
@@ -64,8 +63,8 @@ export class MyApp {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
     });
-    this.afAuth.authState.subscribe(data => {
-      if (data && data.email && data.uid) {
+    this.afAuth.authState.subscribe(data =>{
+      if(data && data.email && data.uid) {
         this.rootPage = MainPage;
       }
       else {
