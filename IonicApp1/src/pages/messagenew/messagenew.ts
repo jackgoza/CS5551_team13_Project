@@ -39,7 +39,8 @@ export class MessagenewPage {
       else {
         this.toast.create({
           message: 'Please Login',
-          duration: 2000
+          duration: 2000,
+          position: 'top'
         }).present();
       }
     });

@@ -51,4 +51,12 @@ export class StarsPage {
     })
   }
 
+  deleteitemS(i) {
+    this.afAuth.authState.take(1).subscribe(auth =>{
+      this.fdb.list(`product/${auth.uid}/myStars`).remove(this.arrDataS[i]);
+    });
+  }
+
+
+
 }

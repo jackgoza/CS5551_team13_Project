@@ -32,6 +32,14 @@ THIS IS THE ONLY PLUGIN YOU MUST INSTALL NOW TO GET THIS TO WORK:
 
 * `ionic cordova plugin add cordova-plugin-googleplus --variable REVERSED_CLIENT_ID=YOUR_REVERSED_CLIENT_ID --variable WEB_APPLICATION_CLIENT_ID=YOUR_APPLICATION_CLIENT_ID`
 
+### Google Map
+
+Have to change to your key in `provider/google-map` file before use
+
+### Firebase
+
+Under `src/app/app.firebase.config.ts`, change the everything like key and firebase projectname to yours and then use the firebase service.
+
 ### Camera
 
 ## Pages

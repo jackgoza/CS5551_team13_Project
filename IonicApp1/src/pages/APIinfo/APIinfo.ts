@@ -11,6 +11,7 @@ import {
 import {ShareItems} from "../../models/shareitems";
 import {AngularFireDatabase, FirebaseListObservable} from "angularfire2/database";
 import {AngularFireAuth} from "angularfire2/auth";
+import {InAppBrowser, InAppBrowserOptions} from "@ionic-native/in-app-browser";
 
 @IonicPage()
 @Component({
@@ -28,6 +29,7 @@ export class APIInfoPage {
     private  afDatabase: AngularFireDatabase,
     private afAuth: AngularFireAuth,
     private toast: ToastController,
+    private iab: InAppBrowser,
     private alertCtrl: AlertController,
     public navParams: NavParams,
     public loadingCtrl: LoadingController) {
@@ -48,6 +50,7 @@ export class APIInfoPage {
     this.shareItems.description = data.shortDescription;
     this.shareItems.rating = data.customerRating;
     this.shareItems.web = data.productUrl;
+    this.shareItems.msrp = data.msrp;
     this.shareItems.shareTimes = 1;
     this.shareItems.store = "Walmart";
     this.shareItems.userID = "Default";
@@ -102,6 +105,7 @@ export class APIInfoPage {
     this.shareItems.description = data.shortDescription;
     this.shareItems.rating = data.customerRating;
     this.shareItems.web = data.productUrl;
+    this.shareItems.msrp = data.msrp;
     this.shareItems.shareTimes = 1;
     this.shareItems.store = "Walmart";
     this.shareItems.userID = "Default";
@@ -114,11 +118,11 @@ export class APIInfoPage {
           this.afDatabase.list(`product/public`).push(this.shareItems)
           setTimeout(()=>{
             this.loading.dismissAll();
-            // this.toast.create({
-            //   message: 'Sharing complete',
-            //   duration: 2000,
-            //   position: 'top'
-            // }).present();
+            this.toast.create({
+              message: 'Sharing complete',
+              duration: 1000,
+              position: 'top'
+            }).present();
           },500);
         }
         else {
@@ -159,7 +163,8 @@ export class APIInfoPage {
     this.shareItems.imageURL = product.largeImage;
     this.shareItems.description = product.shortDescription;
     this.shareItems.rating = product.customerRating;
-    this.shareItems.web = product.productUrl;
+    this.shareItems.msrp = product.salePrice;
+    this.shareItems.web = "none";
     this.shareItems.shareTimes = 1;
 
     this.afAuth.authState.take(1).subscribe(data1 => {
@@ -237,4 +242,10 @@ export class APIInfoPage {
 
   }
 
+  openWebPage(item) {
+    const options: InAppBrowserOptions = {
+      zoom: 'no'
+    };
+    const browser = this.iab.create(item.productUrl, '_self', options);
+  }
 }

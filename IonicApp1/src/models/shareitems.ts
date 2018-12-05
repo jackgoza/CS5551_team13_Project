@@ -8,4 +8,5 @@ export  interface ShareItems {
   store: string;
   userID: string;
   web: string;
+  msrp: string;
 }

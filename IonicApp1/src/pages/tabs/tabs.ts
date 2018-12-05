@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, ToastController} from 'ionic-angular';
-import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root, Tab6Root } from '../';
+import { Tab1Root, Tab2Root, Tab3Root, Tab4Root, Tab5Root } from '../';
 import {Profile} from "../../models/profile";
 import {AngularFireAuth} from "angularfire2/auth";
 import 'rxjs/add/operator/take';
@@ -17,14 +17,12 @@ export class TabsPage {
   tab3Root: any = Tab3Root;
   tab4Root: any = Tab4Root;
   tab5Root: any = Tab5Root;
-  tab6Root: any = Tab6Root;
 
   tab1Title = " ";
   tab2Title = " ";
   tab3Title = " ";
   tab4Title = " ";
   tab5Title = " ";
-  tab6Title = " ";
 
   profileData: FirebaseListObservable<Profile>;
 
@@ -38,7 +36,6 @@ export class TabsPage {
     this.tab3Title = "Search";
     this.tab4Title = "Message";
     this.tab5Title = "User";
-    this.tab6Title = "World";
   }
   ionViewWillLoad() {
     this.afAuth.authState.take(1).subscribe(data =>{
@@ -52,11 +49,6 @@ export class TabsPage {
         this.profileData = this.afDatabase.object(`profile/${data.uid}`)
       }
       else {
-        this.toast.create({
-          message: 'Could not find authentication details',
-          duration: 2000,
-          position: 'top'
-        }).present();
       }
     });
   }
